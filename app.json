@@ -1,0 +1,12 @@
+{
+  "name": "cg-clone-app-frontend",
+  "displayName": "cg-clone-app-frontend",
+  "expo": {
+    "name": "cg-clone-app-frontend",
+    "slug": "cg-clone-app-frontend",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
