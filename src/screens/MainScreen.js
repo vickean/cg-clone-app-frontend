@@ -1,6 +1,14 @@
 import React from "react";
-import { StyleSheet, Text, View, SafeAreaView, FlatList } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  FlatList,
+  Button,
+} from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
+import axios from "axios";
 
 const vertFlatListData = Array(6)
   .fill("x")
@@ -12,6 +20,13 @@ const vertFlatListData = Array(6)
   });
 
 export default function MainScreen() {
+  const testGet = () => {
+    axios
+      .get("http://10.0.2.2:3000")
+      .then((response) => console.log("RESP>>> ", response.data))
+      .catch((err) => console.log("ERR>>> ", err));
+  };
+
   const TopOfPage = () => {
     return (
       <View
@@ -74,6 +89,7 @@ export default function MainScreen() {
             keyExtractor={(item) => item.id}
           />
         </View>
+        <Button onPress={testGet} title="Say Hi to Server" color="#841584" />
       </View>
     );
   };
