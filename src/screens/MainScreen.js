@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import axios from "axios";
+import MatchesList from "../components/MatchesList";
 
 const vertFlatListData = Array(6)
   .fill("x")
@@ -57,38 +58,7 @@ export default function MainScreen() {
         >
           <Text>Write a post box</Text>
         </View>
-        <View
-          style={{
-            width: "95%",
-            backgroundColor: "#CC00CC",
-            marginVertical: 10,
-            height: 160,
-          }}
-        >
-          <Text>Social Matches</Text>
-          <FlatList
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            data={vertFlatListData}
-            renderItem={({ item }) => {
-              return (
-                <View
-                  style={{
-                    width: 100,
-                    height: 130,
-                    backgroundColor: "#FFF",
-                    marginHorizontal: 5,
-                  }}
-                >
-                  <Text style={{ fontSize: 50, paddingLeft: 10 }}>
-                    {item.content}
-                  </Text>
-                </View>
-              );
-            }}
-            keyExtractor={(item) => item.id}
-          />
-        </View>
+        <MatchesList />
         <Button onPress={testGet} title="Say Hi to Server" color="#841584" />
       </View>
     );
