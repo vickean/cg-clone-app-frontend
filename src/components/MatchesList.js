@@ -8,6 +8,7 @@ import {
   Button,
   Pressable,
 } from "react-native";
+import MaterialIcon from "react-native-vector-icons/MaterialIcons";
 import axios from "axios";
 
 export default function MatchesList() {
@@ -17,7 +18,6 @@ export default function MatchesList() {
     axios
       .get("http://10.0.2.2:3000/matches/1/")
       .then((response) => {
-        console.log("RESP>>> ", response.data);
         setMatchData(response.data);
       })
       .catch((err) => console.log("ERR>>> ", err));
@@ -31,7 +31,7 @@ export default function MatchesList() {
     <View
       style={{
         width: "95%",
-        backgroundColor: "#CC00CC",
+        backgroundColor: "#FFF",
         marginVertical: 10,
         height: 220,
       }}
@@ -39,13 +39,20 @@ export default function MatchesList() {
       <View
         style={{
           width: "100%",
-          backgroundColor: "#F1F1F1",
+          backgroundColor: "#FFF",
           display: "flex",
           flexDirection: "row",
         }}
       >
         <View style={{ flex: 3, paddingLeft: 6 }}>
-          <Text style={{ fontSize: 18, paddingTop: 3, fontWeight: "bold" }}>
+          <Text
+            style={{
+              fontSize: 18,
+              paddingTop: 3,
+              fontWeight: "bold",
+              color: "#184139",
+            }}
+          >
             Social Matches
           </Text>
           <Text style={{ fontSize: 12, paddingBottom: 3 }}>
@@ -53,9 +60,16 @@ export default function MatchesList() {
           </Text>
         </View>
         <View
-          style={{ flex: 1, justifyContent: "center", alignItems: "flex-end" }}
+          style={{
+            flex: 1,
+            justifyContent: "flex-end",
+            alignItems: "center",
+            flexDirection: "row",
+            paddingRight: 10,
+          }}
         >
-          <Text style={{ fontSize: 12, paddingRight: 10 }}>See All</Text>
+          <Text style={{ fontSize: 12, paddingRight: 1 }}>See All</Text>
+          <MaterialIcon name="arrow-forward-ios" size={12} color="#000" />
         </View>
       </View>
       <FlatList
@@ -75,6 +89,8 @@ export default function MatchesList() {
                 alignItems: "center",
                 paddingVertical: 10,
                 paddingHorizontal: 10,
+                borderWidth: 1,
+                borderColor: "#F6F6F6",
               }}
             >
               <Image
@@ -98,7 +114,12 @@ export default function MatchesList() {
                 {item.percentage}% Match
               </Text>
               <Text
-                style={{ fontSize: 12, fontWeight: "bold", marginTop: 2 }}
+                style={{
+                  fontSize: 12,
+                  fontWeight: "bold",
+                  marginTop: 2,
+                  color: "#184139",
+                }}
                 numberOfLines={1}
               >
                 {item.matchee.username}
